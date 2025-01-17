@@ -11,25 +11,27 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - celery
     - pip
-    - python
+    - python {{ python_min }}
     - python-dateutil
     - redis-py
     - tenacity
   run:
     - celery
-    - python
+    - python >={{ python_min }}
     - python-dateutil
     - redis-py
     - tenacity
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - redbeat
 
