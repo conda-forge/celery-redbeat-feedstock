@@ -1,32 +1,29 @@
 {% set name = "celery-redbeat" %}
-{% set version = "0.13.0" %}
+{% set version = "2.3.3" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 8ba060f5fffa96fc6dbb0e37a10506cada03333f34ba502b134cbbdb08891266
+  url: "https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/celery_redbeat-{{ version }}.tar.gz"
+  sha256: f52664b490b2923a787d9f348f291243601430bf8ec383b6e79870a1731ee92a
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - celery
     - pip
     - python {{ python_min }}
-    - python-dateutil
-    - redis-py
-    - tenacity
+    - setuptools
   run:
-    - celery
+    - celery >=5.0
     - python >={{ python_min }}
     - python-dateutil
-    - redis-py
+    - redis-py >=3.2
     - tenacity
 
 test:
@@ -37,7 +34,7 @@ test:
 
 about:
   home: "https://github.com/sibson/redbeat"
-  license: Apache Software
+  license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE 
   summary: "A Celery Beat Scheduler using Redis for persistent storage"
