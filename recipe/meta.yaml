@@ -1,5 +1,5 @@
 {% set name = "celery-redbeat" %}
-{% set version = "2.4.1" %}
+{% set version = "2.4.2" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/celery_redbeat-{{ version }}.tar.gz"
-  sha256: c429ae50de25475e07c31e06261da6f6b7b8179f7e35f13060bafe6f7d3bf3ec
+  sha256: a590fef7ef39d7e4511174ce8bafe310e07ef6cdf84a240cd311946815bd90bb
 
 build:
   noarch: python
